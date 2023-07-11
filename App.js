@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 // const header = document.createElement('h1');
 // header.innerHTML = "Hello world from JS"
 // const element = document.getElementById('root');
