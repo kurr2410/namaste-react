@@ -1,3 +1,19 @@
-#heading{
-    color:red;
+#heading {
+    color: red;
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+
+}
+#searchBar{
+    text-align: right;
+}
+#profile{
+    margin-right: 0px;
+}
+#logo {
+    max-width: 70px;
+    max-height: 70px;
 }

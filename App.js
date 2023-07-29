@@ -21,7 +21,7 @@ import ReactDOM from 'react-dom/client';
 
 //Episode:03
 
-//React element (JS Object)
+//React element (JS Object) JSX
 // const jsxheading = (<h1 id="heading" className='headingClass'>
 //     Namaste React with JSX
 // </h1>)
@@ -36,9 +36,9 @@ const Title = () => (
 //js variable
 const test = 10000;
 
-//React Element
+//React Element(JSX)
 const reactElement2 = <h3>Testing React element in another React element</h3>
-//React Element
+//React Element(JSX)
 const reactElementTest = <div>
     {reactElement2}
     <h2> Testing React Element inside React component</h2>
@@ -60,7 +60,7 @@ const HeadingComponent2 = () => { // Example for using sibling components using 
     return  <React.Fragment>
         {test}
         {reactElementTest}
-        <Title />
+        {<Title />}
         <Title></Title>
         {Title()}
         <h1 id="heading" className="headingClass">Namaste React with Functional component 2</h1>
