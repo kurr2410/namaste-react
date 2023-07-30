@@ -61,7 +61,7 @@ const HeadingComponent2 = () => { // Example for using sibling components using 
         {test}
         {reactElementTest}
         {<Title />}
-        <Title></Title>
+        {<Title></Title>}
         {Title()}
         <h1 id="heading" className="headingClass">Namaste React with Functional component 2</h1>
     </React.Fragment>
