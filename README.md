@@ -19,3 +19,18 @@
 - Tree shaking: remove unsed code/files while bundling/minifying
 - It creates different build for dev and prod(more minified & takes more time to build)
 - For prod build use command: npm parcel build index.html
+
+
+
+# Food Ordering App wireframe
+- Header
+    -logo
+    -nav
+    -cart
+-Body
+    -search bar
+    -restruarant container
+        -restruarant cards
+-Footer
+    -copyright
+    -address
