@@ -35,7 +35,7 @@ export const Body = () => {
                 setSearchRes(e.target.value)
             }} />
             <button type="submit" onClick={()=>{
-                const searchresult = resList.filter((item)=> item.info.name.toLowerCase().includes(searchRes))
+                const searchresult = resList.filter((item)=> item.info.name.toLowerCase().includes(searchRes.toLowerCase()))
                 setFilteredResList(searchresult);
             }}>Search</button>
         </div>
