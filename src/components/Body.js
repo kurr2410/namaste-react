@@ -18,15 +18,15 @@ export const Body = () => {
         const response = await fetch(swiggyUrl);
         const json = await response.json();
         const data = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        setResList(data);
-        setFilteredResList(data);
+        setResList(data || []);
+        setFilteredResList(data ||[]);
     }
 
-    return resList?.length == 0 ? <Shimmer/>: <div id="body">
+    return resList?.length == 0 || filteredResList?.length == 0 ? <Shimmer/>: <div id="body">
         <div>
             <button className="topRatedres" onClick={() => {
                 const filterData = resList.filter(item => item.info.avgRating >= 4);
-                setFilteredResList(filterData);
+                setFilteredResList(filterData||[]);
             }}>
                 Top rated restaurants
             </button>
@@ -37,7 +37,7 @@ export const Body = () => {
             }} />
             <button type="submit" onClick={()=>{
                 const searchresult = resList.filter((item)=> item.info.name.toLowerCase().includes(searchRes.toLowerCase()))
-                setFilteredResList(searchresult);
+                setFilteredResList(searchresult||[]);
             }}>Search</button>
         </div>
         <div className="restaurant-container">
