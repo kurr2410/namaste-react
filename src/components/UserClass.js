@@ -23,9 +23,13 @@ class UserClass extends React.Component{
     }
     componentDidUpdate(){
         console.log("it is called after updating the data with new data, i.e. after calling the componentDidMount");
+        this.timer = setInterval(()=>{
+            console.log("this is class timer");
+        },1000)
     }
     componentWillUnmount(){
         console.log("this will be called while closing/removing this component from DOM")
+        clearInterval(this.timer)
     }
     render(){
         console.log("child render")
