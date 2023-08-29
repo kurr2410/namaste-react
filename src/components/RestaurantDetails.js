@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {RES_DETAILS_URL} from "../utils/constants"
+import {useRestaurantDetails} from "../utils/useRestaurantDetails"
 
-export const RestaurantDetails = (props)=>{
+export const RestaurantDetails = ()=>{
     const {resId }= useParams();
-    const [resInfo, setResInfo]= useState({});
-    useEffect(()=>{
-        fetchMenu();
-    },[])
-    const fetchMenu = async ()=>{
-        const response = await fetch(RES_DETAILS_URL+resId);
-        const data = await response.json();
-        setResInfo(data);
-    }
+    const resInfo = useRestaurantDetails(resId);
     const info = resInfo?.data?.cards[0]?.card?.card?.info;
     if(!info){
         return <h2>ShimmerUI</h2>;
