@@ -30,24 +30,26 @@ export const Body = () => {
     }
 
     return resList?.length == 0 || filteredResList?.length == 0 ? <Shimmer/>: <div id="body">
-        <div>
-            <button className="topRatedres" onClick={() => {
+        <div className="flex justify-start items-center">
+        <div className="m-4">
+            <button className="bg-sky-200 hover:bg-sky-400 p-2 rounded-md" onClick={() => {
                 const filterData = resList.filter(item => item.info.avgRating >= 4);
                 setFilteredResList(filterData||[]);
             }}>
                 Top rated restaurants
             </button>
         </div>
-        <div className="searchBar">
-            <input type="text" placeholder="Search for restaurant, cuisine or a dish.." name="search" value={searchRes} onChange={(e)=>{
+        <div className="mx-80">
+            <input className="w-80 focus:outline-none bg-sky-100 hover:bg-sky-200 p-2 rounded-md" type="text" placeholder="Search for restaurant, cuisine or a dish.." name="search" value={searchRes} onChange={(e)=>{
                 setSearchRes(e.target.value)
             }} />
-            <button type="submit" onClick={()=>{
+            <button type="submit" className="bg-sky-200 hover:bg-sky-400 p-2 m-2 rounded-md" onClick={()=>{
                 const searchresult = resList.filter((item)=> item.info.name.toLowerCase().includes(searchRes.toLowerCase()))
                 setFilteredResList(searchresult||[]);
             }}>Search</button>
         </div>
-        <div className="restaurant-container">
+        </div>
+        <div className="flex flex-wrap justify-between">
             {filteredResList.map(ele => {
                 const item = ele;
                 return <Link key={item.info.id} to={"/restaurant/"+item.info.id}><RestaurantCard restaurant={item}></RestaurantCard></Link>

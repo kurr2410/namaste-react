@@ -1,4 +1,9 @@
-#header {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* #header {
     justify-content: space-between;
     align-items: center;
     height: 80px;
@@ -86,4 +91,4 @@ h5 {
     height: 450px;
     padding: 5px;
     background-color: rgb(197, 196, 196);
-}
+} */
