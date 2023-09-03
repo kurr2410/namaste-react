@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useRestaurantDetails } from "../utils/useRestaurantDetails"
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react"
 
 export const RestaurantDetails = () => {
     const { resId } = useParams();
     const resInfo = useRestaurantDetails(resId);
+    const [openIndex, setOpenIndex] = useState(0);
     const info = resInfo?.data?.cards[0]?.card?.card?.info;
     const groupedCard = resInfo?.data?.cards[2].groupedCard;
     const categories = groupedCard?.cardGroupMap?.REGULAR?.cards.filter((category) =>
@@ -28,7 +30,10 @@ export const RestaurantDetails = () => {
         </div>
         <div className="py-2">
         {categories.map((category, index) => {
-            return (<RestaurantCategory key={index} category={category}></RestaurantCategory>)
+            return (<RestaurantCategory key={index} category={category} isCollapsed ={index==openIndex && true} 
+                expandCategory={()=>{
+                setOpenIndex(index)
+            }}></RestaurantCategory>)
         })}
     </div>
     </div> 
