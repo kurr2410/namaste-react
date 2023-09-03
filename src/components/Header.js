@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { APP_LOGO } from "../utils/constants"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 export const Header = () => {
     const [loginBtn, setLoginBtn] = useState("Login");
     console.log("header re-rendered")
     const status = useOnlineStatus();
+    const userData = useContext(UserContext);
     return <div id="header" className="flex justify-between items-center bg-sky-300">
         <img className="m-4 p-4 w-40 h-fit" src={APP_LOGO}></img>
         <nav className="">
@@ -17,6 +19,7 @@ export const Header = () => {
                 <li className="mx-3 cursor-pointer"><Link to="/lazy">Lazy Component</Link></li>
                 <li className="mx-3 cursor-pointer">Cart</li>
                 <li className="mx-3 cursor-pointer"><button onClick={()=> {loginBtn === "Login" ? setLoginBtn("Logout"):setLoginBtn("Login")}}>{loginBtn}</button></li>
+                <li className="mx-3 cursor-pointer font-bold">{userData.loggedInUser}</li>
             </ul>
         </nav>
     </div>

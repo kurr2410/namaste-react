@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { restData } from "../utils/mockData";
 import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const PromotedRestaurantcard = withPromotedLabel(RestaurantCard)
 
@@ -18,6 +19,8 @@ export const Body = () => {
     useEffect(() => {
         fetchResData();
     }, [])
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
 
     const fetchResData = async () => {
         const swiggyUrl = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9233948&lng=77.6385779&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
@@ -49,6 +52,9 @@ export const Body = () => {
                 const searchresult = resList.filter((item)=> item.info.name.toLowerCase().includes(searchRes.toLowerCase()))
                 setFilteredResList(searchresult||[]);
             }}>Search</button>
+        </div>
+        <div>
+            <input className="m-4 border border-black" value={loggedInUser} onChange = {(e)=> setUserName(e.target.value)}></input>
         </div>
         </div>
         <div className="flex flex-wrap justify-between">

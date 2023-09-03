@@ -8,13 +8,19 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import UserContext from "./utils/UserContext";
+import { useState } from "react";
 // import LazyLoadingComponent from "./components/LazyLoadingComponent";
 
 const AppLayout = () => {
+    const [userName, setUserName] = useState("Default Name")
     return <div id="applayout">
+        
         <Header></Header>
+        <UserContext.Provider value={{loggedInUser:userName, setUserName}}  >
         <Outlet/>
         <Footer></Footer>
+        </UserContext.Provider>
     </div>
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 
+import UserContext from "../utils/UserContext";
 class UserClass extends React.Component{
     constructor(props){
         super(props);
@@ -36,6 +37,12 @@ class UserClass extends React.Component{
         const { name, location}= this.state.userInfo;
         return (
             <div className="user-card">
+               <UserContext.Consumer>
+                    {(data)=>{
+                        return (<h4>LoggedIn User: {data.loggedInUser}</h4>) // return is used because we have used {} brackets.
+                    }}
+                </UserContext.Consumer>
+                
                 <h2>Name:{name}</h2>
                 <h3>Location: {location}</h3>
                 <h3>Count1: {this.state.count1}</h3>
