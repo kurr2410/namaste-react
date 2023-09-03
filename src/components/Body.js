@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { restData } from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
+const PromotedRestaurantcard = withPromotedLabel(RestaurantCard)
 
 export const Body = () => {
     const [resList, setResList] = useState([]);
@@ -52,7 +54,10 @@ export const Body = () => {
         <div className="flex flex-wrap justify-between">
             {filteredResList.map(ele => {
                 const item = ele;
-                return <Link key={item.info.id} to={"/restaurant/"+item.info.id}><RestaurantCard restaurant={item}></RestaurantCard></Link>
+                return <Link key={item.info.id} to={"/restaurant/"+item.info.id}>
+                    {item?.info?.aggregatedDiscountInfoV3?.header ? 
+                    <PromotedRestaurantcard restaurant={item}></PromotedRestaurantcard> : <RestaurantCard restaurant={item}></RestaurantCard>
+            }</Link>
             })}
         </div>
     </div>
